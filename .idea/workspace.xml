@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="3c957f63-05e8-490f-8e0d-a5019941a8a2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/backend/ms-scrum-core/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-scrum-core/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-scrum-core/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-scrum-core/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-scrum-core/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-scrum-core/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-scrum-core/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-scrum-core/HELP.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-scrum-core/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-scrum-core/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-scrum-core/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-scrum-core/src/main/java/com/agiletracker/scrumcore/MsScrumCoreApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-scrum-core/src/main/java/com/agiletracker/scrumcore/models/BacklogItem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-scrum-core/src/main/java/com/agiletracker/scrumcore/models/Equipe.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-scrum-core/src/main/java/com/agiletracker/scrumcore/models/MembreEquipe.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-scrum-core/src/main/java/com/agiletracker/scrumcore/models/MembreProjet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-scrum-core/src/main/java/com/agiletracker/scrumcore/models/Projet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-scrum-core/src/main/java/com/agiletracker/scrumcore/models/Sprint.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-scrum-core/src/main/java/com/agiletracker/scrumcore/models/Tache.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-scrum-core/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-scrum-core/src/test/java/com/agiletracker/scrumcore/MsScrumCoreApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-scrum-core/target/classes/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-scrum-core/target/classes/com/agiletracker/scrumcore/MsScrumCoreApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-scrum-core/target/classes/com/agiletracker/scrumcore/models/BacklogItem.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-scrum-core/target/classes/com/agiletracker/scrumcore/models/Equipe.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-scrum-core/target/classes/com/agiletracker/scrumcore/models/MembreEquipe.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-scrum-core/target/classes/com/agiletracker/scrumcore/models/MembreProjet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-scrum-core/target/classes/com/agiletracker/scrumcore/models/Projet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-scrum-core/target/classes/com/agiletracker/scrumcore/models/Sprint.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-scrum-core/target/classes/com/agiletracker/scrumcore/models/Tache.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-time-and-reporting/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-time-and-reporting/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-time-and-reporting/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-time-and-reporting/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-time-and-reporting/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-time-and-reporting/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-time-and-reporting/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-time-and-reporting/HELP.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-time-and-reporting/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-time-and-reporting/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-time-and-reporting/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-time-and-reporting/src/main/java/com/agiletracker/timereporting/MsTimeReportingApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-time-and-reporting/src/main/java/com/agiletracker/timereporting/models/Rapport.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-time-and-reporting/src/main/java/com/agiletracker/timereporting/models/Temps.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-time-and-reporting/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-time-and-reporting/src/test/java/com/agiletracker/timereporting/MsTimeReportingApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-time-and-reporting/target/classes/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-time-and-reporting/target/classes/com/agiletracker/timereporting/MsTimeReportingApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-time-and-reporting/target/classes/com/agiletracker/timereporting/models/Rapport.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-time-and-reporting/target/classes/com/agiletracker/timereporting/models/Temps.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-user-access/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-user-access/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-user-access/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-user-access/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-user-access/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-user-access/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-user-access/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-user-access/HELP.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-user-access/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-user-access/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-user-access/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-user-access/src/main/java/com/agiletracker/useraccess/MsUserAccessApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-user-access/src/main/java/com/agiletracker/useraccess/models/Utilisateur.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-user-access/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-user-access/src/test/java/com/agiletracker/useraccess/MsUserAccessApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-user-access/target/classes/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-user-access/target/classes/com/agiletracker/useraccess/MsUserAccessApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ms-user-access/target/classes/com/agiletracker/useraccess/models/Utilisateur.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/postgres-init/init.sql" beforeDir="false" afterPath="$PROJECT_DIR$/backend/postgres-init/init.sql" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 1,
+  "fromUser": false
+}]]></component>
+  <component name="ProjectId" id="3Cql2j7BeEMaP1NX47FaQqG3upl" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/salma/Documents/S8_Projects/agile-tracker/backend/user-access-ms",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3c957f63-05e8-490f-8e0d-a5019941a8a2" name="Changes" comment="" />
+      <created>1777120778173</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1777120778173</updated>
+      <workItem from="1777120779486" duration="25000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
