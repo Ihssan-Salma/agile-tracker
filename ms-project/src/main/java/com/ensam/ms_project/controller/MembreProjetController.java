@@ -1,0 +1,49 @@
+package com.ensam.ms_project.controller;
+
+import com.ensam.ms_project.model.Role;
+import com.ensam.ms_project.service.MembreProjetService;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("api/membre-projet")
+public class MembreProjetController {
+    private final MembreProjetService membreProjetService;
+    public MembreProjetController(MembreProjetService membreProjetService) {
+        this.membreProjetService = membreProjetService;
+    }
+
+    @PostMapping("/inviter")
+    public ResponseEntity<?> invitermembre(@RequestParam int user_id, @RequestParam int projet_id, @RequestParam Role roleAffecte, @RequestParam Role myRole){
+        try{
+            return ResponseEntity.ok(membreProjetService.inviterMembre(user_id,projet_id,roleAffecte,myRole));
+
+        }catch(Exception e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+
+    }
+    @DeleteMapping("/retirer")
+    public ResponseEntity<?> retirer(@RequestParam int membre_id, @RequestParam int projet_id, @RequestParam Role myrole){
+        try{
+            return ResponseEntity.ok(membreProjetService.retirerMembre(membre_id,projet_id,myrole));
+
+        }catch(Exception e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+
+    }
+    @GetMapping("/get-membres")
+    public ResponseEntity<?> get_members(@RequestParam int projet_id){
+        try{
+            return ResponseEntity.ok(membreProjetService.getMembreProjet(projet_id));
+
+        }catch(Exception e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+
+    }
+
+}

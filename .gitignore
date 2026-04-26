@@ -1,0 +1,15 @@
+
+**/application.properties
+**/application.yml
+**/application.yaml
+
+
+.idea/
+*.iml
+
+
+**/target/
+**/build/
+
+# Logs
+*.log
