@@ -13,13 +13,13 @@ import lombok.NoArgsConstructor;
 public class MembreProjet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer memprojet_id;
+    private Integer memprojetId;
 
     @ManyToOne
     @JoinColumn(name="projet_id") //membre qui contient clé etrangere
     @JsonIgnore
     private Projet projet;
-    private int utilisateur_id;
+    private int utilisateurId;
     @Enumerated(EnumType.STRING)
     private Role role;
 

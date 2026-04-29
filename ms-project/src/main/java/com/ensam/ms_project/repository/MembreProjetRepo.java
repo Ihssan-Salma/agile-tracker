@@ -9,4 +9,6 @@ import java.util.List;
 @Repository
 public interface MembreProjetRepo extends JpaRepository<MembreProjet,Integer> {
     List<MembreProjet> findByProjet_ProjetId(int projetId);
+
+    boolean existsByUtilisateurIdAndProjet_ProjetId(int utilisateurId, int projetId);
 }

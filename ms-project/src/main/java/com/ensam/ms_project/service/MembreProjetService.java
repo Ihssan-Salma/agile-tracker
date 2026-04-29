@@ -34,15 +34,15 @@ public class MembreProjetService {
                 .orElseThrow(() -> new RuntimeException("Projet not found"));
 
         MembreProjet membreProjet = new MembreProjet();
-        membreProjet.setUtilisateur_id(user_id);
+        membreProjet.setUtilisateurId(user_id);
         membreProjet.setRole(rolemem);
         membreProjet.setProjet(projet);
 
         MembreProjet saved = membreProjetRepo.save(membreProjet);
 
         MembreProjetDTO dto = new MembreProjetDTO();
-        dto.setId(saved.getMemprojet_id());
-        dto.setUserId(saved.getUtilisateur_id());
+        dto.setId(saved.getMemprojetId());
+        dto.setUserId(saved.getUtilisateurId());
         dto.setProjetId(saved.getProjet().getProjetId());
         dto.setRole(saved.getRole());
 

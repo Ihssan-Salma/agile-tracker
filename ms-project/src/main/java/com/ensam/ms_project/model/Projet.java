@@ -24,4 +24,6 @@ public class Projet {
     private float capaciteSprint;
     @OneToMany(mappedBy = "projet")
     List<MembreProjet> membre; //MembreProjet qui contient clé etrangere (va voir l'attribut projet mappdby)
+    @OneToMany(mappedBy = "projet")
+    List<Equipe> equipe;
 }
