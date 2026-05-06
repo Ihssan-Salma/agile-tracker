@@ -57,20 +57,20 @@ public class JwtAuthenticationFilter implements GlobalFilter, Ordered {
             return unauthorized(exchange);
         }
 
-        Object userIdClaim = claims.get("user_id");
-        String role = claims.get("role", String.class);
-        if (userIdClaim == null || role == null || role.isBlank()) {
+        Object userIdClaim = claims.getSubject();
+        if (userIdClaim == null) {
             return unauthorized(exchange);
         }
 
         String userId = String.valueOf(userIdClaim);
+        String expiration = String.valueOf(claims.getExpiration().getTime());
 
         ServerHttpRequest mutatedRequest = request.mutate()
                 .headers(headers -> {
-                    headers.remove(HEADER_USER_ID);
-                    headers.remove(HEADER_USER_ROLE);
-                    headers.add(HEADER_USER_ID, userId);
-                    headers.add(HEADER_USER_ROLE, role);
+                    headers.remove("X-User-Id");
+                    headers.remove("X-User-Exp");
+                    headers.add("X-User-Id", userId);
+                    headers.add("X-User-Exp", expiration);
                 })
                 .build();
 

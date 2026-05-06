@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.agile_tracker.user_access_ms.UserAccessMsApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.165 s -- in com.agile_tracker.user_access_ms.UserAccessMsApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.723 s -- in com.agile_tracker.user_access_ms.UserAccessMsApplicationTests

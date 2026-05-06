@@ -61,9 +61,7 @@ public class JwtService {
         Date now = new Date();
         Date expiryDate = new Date(now.getTime() + expirationMs);
         return Jwts.builder()
-                .setSubject(utilisateur.getUsername())
-                .claim("user_id", utilisateur.getId())
-                .claim("role", "ROLE_USER")
+                .setSubject(String.valueOf(utilisateur.getId()))
                 .setIssuedAt(now)
                 .setExpiration(expiryDate)
                 .signWith(signingKey, SignatureAlgorithm.HS256)
