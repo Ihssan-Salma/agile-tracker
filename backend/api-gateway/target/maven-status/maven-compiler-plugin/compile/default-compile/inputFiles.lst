@@ -1,0 +1,3 @@
+/home/salma/Documents/S8_Projects/agile-tracker/backend/api-gateway/src/main/java/com/agile_tracker/api_gateway/ApiGatewayApplication.java
+/home/salma/Documents/S8_Projects/agile-tracker/backend/api-gateway/src/main/java/com/agile_tracker/api_gateway/security/JwtAuthenticationFilter.java
+/home/salma/Documents/S8_Projects/agile-tracker/backend/api-gateway/src/main/java/com/agile_tracker/api_gateway/security/JwtService.java
