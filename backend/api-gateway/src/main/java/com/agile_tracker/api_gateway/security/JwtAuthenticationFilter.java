@@ -33,14 +33,14 @@ public class JwtAuthenticationFilter implements GlobalFilter, Ordered {
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, org.springframework.cloud.gateway.filter.GatewayFilterChain chain) {
         ServerHttpRequest request = exchange.getRequest();
-        String path = request.getPath().value();
         String authHeader = request.getHeaders().getFirst(HttpHeaders.AUTHORIZATION);
 
-        if (request.getMethod() == HttpMethod.OPTIONS ||
-                (isPublicPath(path) && (authHeader == null || !authHeader.startsWith("Bearer ")))) {
+        // 1. Allow browser preflight requests
+        if (request.getMethod() == HttpMethod.OPTIONS) {
             return chain.filter(exchange);
         }
 
+        // 2. Enforce token presence
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
             return unauthorized(exchange);
         }
@@ -50,19 +50,20 @@ public class JwtAuthenticationFilter implements GlobalFilter, Ordered {
             return unauthorized(exchange);
         }
 
+        // 3. Validate and Decrypt Token
         Claims claims;
         try {
             claims = jwtService.parseToken(token);
         } catch (Exception ex) {
+            // ADD THIS LINE TO SEE THE EXACT BUG IN YOUR TERMINAL LOGS:
+            System.out.println("JWT Parsing Failed Reason: " + ex.getMessage());
+            ex.printStackTrace();
+
             return unauthorized(exchange);
         }
 
-        Object userIdClaim = claims.getSubject();
-        if (userIdClaim == null) {
-            return unauthorized(exchange);
-        }
-
-        String userId = String.valueOf(userIdClaim);
+        // 4. Extract info and inject into headers for internal microservices
+        String userId = String.valueOf(claims.getSubject());
         String expiration = String.valueOf(claims.getExpiration().getTime());
 
         ServerHttpRequest mutatedRequest = request.mutate()

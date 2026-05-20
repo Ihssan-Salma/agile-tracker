@@ -1,13 +1,20 @@
-# Stage 1: Build the application
-FROM maven:3.9-eclipse-temurin-17 AS build
+# --- Build Stage ---
+FROM maven:3.9.6-eclipse-temurin-21 AS builder
 WORKDIR /app
+
+# 1. Copy ONLY the pom.xml first to isolate dependencies
 COPY pom.xml .
+
+# 2. Go offline to download and cache all dependencies 
+RUN mvn dependency:go-offline -B
+
+# 3. Now copy the source code and build
 COPY src ./src
 RUN mvn clean package -DskipTests
 
-# Stage 2: Run the application
-FROM eclipse-temurin:17-jre-alpine
+# --- Runtime Stage ---
+FROM eclipse-temurin:21-jre
 WORKDIR /app
-COPY --from=build /app/target/*.jar app.jar
+COPY --from=builder /app/target/*.jar app.jar
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "app.jar"]
