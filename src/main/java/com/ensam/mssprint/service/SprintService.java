@@ -24,9 +24,7 @@ public class SprintService {
         this.projectValidationEnabled = projectValidationEnabled;
     }
 
-    // ===============================
     // PRODUCT OWNER (WRITE)
-    // ===============================
 
     public Sprint createSprint(Sprint sprint) {
 
@@ -105,9 +103,7 @@ public class SprintService {
         return sprintRepository.save(sprint);
     }
 
-    // ===============================
     // SCRUM MASTER (READ ONLY)
-    // ===============================
 
     public List<Sprint> getSprintsActifs(Integer projetId) {
         return sprintRepository.findByProjetIdAndTermine(projetId, false);
@@ -132,9 +128,8 @@ public class SprintService {
         return 0.0;
     }
 
-    // ===============================
+
     // COMMUN
-    // ===============================
 
     public Sprint getSprintById(Integer id) {
         return sprintRepository.findById(id)
