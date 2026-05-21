@@ -16,9 +16,13 @@ public class MembreProjetController {
     }
 
     @PostMapping("/inviter")
-    public ResponseEntity<?> invitermembre(@RequestParam int user_id, @RequestParam int projet_id, @RequestParam Role roleAffecte, @RequestParam Role myRole){
+    public ResponseEntity<?> invitermembre(@RequestParam int user_id, @RequestParam int projet_id, @RequestParam String roleAffecte,@RequestHeader("X-User-Id") Long userId,
+
+                                           @RequestHeader("X-User-Exp") Long expiration,
+
+                                           @RequestHeader("Authorization") String token){
         try{
-            return ResponseEntity.ok(membreProjetService.inviterMembre(user_id,projet_id,roleAffecte,myRole));
+            return ResponseEntity.ok(membreProjetService.inviterMembre(userId,user_id,projet_id,roleAffecte));
 
         }catch(Exception e){
             return ResponseEntity.badRequest().body(e.getMessage());

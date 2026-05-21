@@ -1,20 +1,24 @@
-# --- Build Stage ---
+# --- STAGE 1: The Builder (The "Kitchen") ---
+# We use a full Maven image with JDK 21 to compile the code
 FROM maven:3.9.6-eclipse-temurin-21 AS builder
 WORKDIR /app
 
-# 1. Copy ONLY the pom.xml first to isolate dependencies
+# Copy only the pom first to cache dependencies (optimization)
 COPY pom.xml .
-
-# 2. Go offline to download and cache all dependencies 
-RUN mvn dependency:go-offline -B
-
-# 3. Now copy the source code and build
 COPY src ./src
+
+# Build the JAR
 RUN mvn clean package -DskipTests
 
-# --- Runtime Stage ---
+# --- STAGE 2: The Runtime (The "Dining Room") ---
+# We use a much smaller JRE image just to run the JAR
 FROM eclipse-temurin:21-jre
 WORKDIR /app
+
+# The logic: Copy from the "builder" stage, NOT from "build"
 COPY --from=builder /app/target/*.jar app.jar
+
+# User-Access-MS port
 EXPOSE 8080
+
 ENTRYPOINT ["java", "-jar", "app.jar"]

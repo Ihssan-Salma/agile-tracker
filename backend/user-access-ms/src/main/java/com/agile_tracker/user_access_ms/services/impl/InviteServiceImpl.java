@@ -9,11 +9,19 @@ import com.agile_tracker.user_access_ms.repositories.UtilisateurRepository;
 import com.agile_tracker.user_access_ms.services.InviteNotificationService;
 import com.agile_tracker.user_access_ms.services.InviteService;
 import java.util.Locale;
+
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 @Service
 @RequiredArgsConstructor
@@ -24,7 +32,7 @@ public class InviteServiceImpl implements InviteService {
     private final PasswordEncoder passwordEncoder;
     private final InviteNotificationService inviteNotificationService;
     private final ProjectClient projectClient; // The Feign Client bridge
-
+    private final RestTemplate restTemplate;
     @Override
     @Transactional
     public InviteUserResponse inviteUser(InviteUserRequest request) {
@@ -53,21 +61,6 @@ public class InviteServiceImpl implements InviteService {
             utilisateur = utilisateurRepository.save(utilisateur);
         }
 
-        // 2. Logic: Internal Linkage to ms-project
-        // We do this for both new and existing users
-        try {
-            UserAssignmentDTO assignment = new UserAssignmentDTO(
-                    utilisateur.getId(),
-                    request.getProjetId(),
-                    request.getRole()
-            );
-            projectClient.assignUserToProject(assignment);
-        } catch (Exception e) {
-            // Log the error but don't fail the invitation.
-            // This is "Linkage Ready" logic.
-            log.warn("Linkage to ms-project failed: Service might be offline.");
-        }
-
         // 3. Logic: Send Notification with context (Project + Role)
         inviteNotificationService.sendInvite(
                 utilisateur.getEmail(),
@@ -76,6 +69,27 @@ public class InviteServiceImpl implements InviteService {
                 request.getProjectName(),
                 request.getRole()
         );
+        ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        HttpHeaders headers = new HttpHeaders();
+
+        if (attributes != null) {
+            HttpServletRequest currentRequest = attributes.getRequest();
+            // Propager les headers requis par votre ms-projet
+            headers.set("X-User-Id", currentRequest.getHeader("X-User-Id"));
+            headers.set("X-User-Exp", currentRequest.getHeader("X-User-Exp"));
+            headers.set("Authorization", currentRequest.getHeader("Authorization"));
+        }
+        String url =
+                "http://host.docker.internal:8082/api/projet/membre-projet/inviter" +
+                        "?user_id=" + utilisateur.getId() +
+                        "&projet_id=" + request.getProjetId() +
+                        "&roleAffecte=" + request.getRole();
+
+        HttpEntity<Void> entity = new HttpEntity<>(headers);
+
+// 4. Envoyer la requête avec l'entité contenant les headers
+        ResponseEntity<String> response = restTemplate.postForEntity(url, entity, String.class);
+        System.out.println(response.getBody());
 
         return InviteUserResponse.builder()
                 .userId(utilisateur.getId())

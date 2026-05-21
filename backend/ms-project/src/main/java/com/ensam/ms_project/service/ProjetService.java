@@ -3,8 +3,10 @@ package com.ensam.ms_project.service;
 import com.ensam.ms_project.dto.ProjetRequestDTO;
 import com.ensam.ms_project.dto.ProjetResponseDTO;
 import com.ensam.ms_project.dto.ProjetUpdateDTO;
+import com.ensam.ms_project.model.MembreProjet;
 import com.ensam.ms_project.model.Projet;
 import com.ensam.ms_project.model.Role;
+import com.ensam.ms_project.repository.MembreProjetRepo;
 import com.ensam.ms_project.repository.ProjetRepository;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,20 +17,33 @@ import java.util.List;
 @Service
 public class ProjetService {
     private final ProjetRepository projetRepository;
+    private final MembreProjetRepo membreProjetRepository;
 
-    public ProjetService(ProjetRepository projetRepository) {
+
+    public ProjetService(ProjetRepository projetRepository, MembreProjetRepo membreProjetRepository) {
         this.projetRepository = projetRepository;
+        this.membreProjetRepository = membreProjetRepository;
     }
-    public ProjetResponseDTO createProjet(ProjetRequestDTO projetDTO, Role role){
-        if (role != Role.PRODUCT_OWNER) {
-            throw new RuntimeException("Only Product Owner can create project");
-        }
+    public ProjetResponseDTO createProjet(ProjetRequestDTO projetDTO, Long userId){
+
         Projet projet = new Projet();
         projet.setNom(projetDTO.getNom());
         projet.setDateDebutPlanifiee(projetDTO.getDateDebutPlanifiee());
         projet.setDateFinPlanifiee(projetDTO.getDateFinPlanifiee());
         projet.setCapaciteSprint(projetDTO.getCapaciteSprint());
         Projet saved = projetRepository.save(projet);
+
+        MembreProjet membreProjet = new MembreProjet();
+
+        membreProjet.setUtilisateurId(Math.toIntExact(userId));
+
+        membreProjet.setRole(Role.PRODUCT_OWNER);
+
+        membreProjet.setProjet(saved);
+
+        membreProjetRepository.save(membreProjet);
+
+
         ProjetResponseDTO response = new ProjetResponseDTO();
         response.setProjetId(saved.getProjetId());
         response.setNom(saved.getNom());

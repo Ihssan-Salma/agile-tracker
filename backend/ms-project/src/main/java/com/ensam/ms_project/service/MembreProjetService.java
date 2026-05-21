@@ -24,18 +24,18 @@ public class MembreProjetService {
     }
 
 
-    public MembreProjetDTO inviterMembre(int user_id, int projet_id, Role rolemem, Role myrole) {
+    public MembreProjetDTO inviterMembre(Long userId,int user_id, int projet_id, String role) {
 
-        if (myrole != Role.PRODUCT_OWNER) {
-            throw new RuntimeException("Only Product Owner can manage project members");
+        MembreProjet membreProjet1= membreProjetRepo.findByUtilisateurIdAndProjet_ProjetId(Math.toIntExact(userId),projet_id).orElseThrow(()->new RuntimeException("Membre not found"));
+        if(!membreProjet1.getRole().equals(Role.PRODUCT_OWNER)){
+            throw new RuntimeException("Permission denied");
         }
-
         Projet projet = projetRepository.findById(projet_id)
                 .orElseThrow(() -> new RuntimeException("Projet not found"));
 
         MembreProjet membreProjet = new MembreProjet();
         membreProjet.setUtilisateurId(user_id);
-        membreProjet.setRole(rolemem);
+        membreProjet.setRole(Role.valueOf(role));
         membreProjet.setProjet(projet);
 
         MembreProjet saved = membreProjetRepo.save(membreProjet);
