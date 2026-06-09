@@ -16,6 +16,7 @@ public class MailInviteNotificationService implements InviteNotificationService 
     @Override
     @Async // The logic: Don't make the user wait for the email to send
     public void sendInvite(String email, String username, String password, String projectName, String role) {
+        System.out.println("sendInvite called");
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(email);
         message.setSubject("Invitation : Rejoignez le projet " + projectName);
@@ -35,6 +36,12 @@ public class MailInviteNotificationService implements InviteNotificationService 
         content += "\nConnectez-vous dès maintenant pour commencer à travailler.";
 
         message.setText(content);
-        mailSender.send(message);
+        message.setFrom("ihssansalma59@gmail.com");
+        try {
+            mailSender.send(message);
+            System.out.println("Email sent successfully");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

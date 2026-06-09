@@ -80,7 +80,7 @@ public class InviteServiceImpl implements InviteService {
             headers.set("Authorization", currentRequest.getHeader("Authorization"));
         }
         String url =
-                "http://host.docker.internal:8082/api/projet/membre-projet/inviter" +
+                "http://localhost:8082/api/projet/membre-projet/inviter" +
                         "?user_id=" + utilisateur.getId() +
                         "&projet_id=" + request.getProjetId() +
                         "&roleAffecte=" + request.getRole();
